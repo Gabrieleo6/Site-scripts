@@ -15,6 +15,7 @@
             --yt-red: #ff0000;
             --green: #16a34a;
             --red: #dc2626;
+            --star-color: #fbbf24;
         }
 
         body {
@@ -70,7 +71,6 @@
         }
         .yt-btn:hover { background-color: #cc0000; }
 
-        /* 🔒 Botão do dono: começa ESCONDIDO (display: none) */
         .admin-btn {
             display: none;
             background-color: #27272a;
@@ -84,7 +84,6 @@
             font-size: 14px;
         }
 
-        /* Só aparece quando o body tem a classe "dono-logado" */
         body.dono-logado .admin-btn { display: inline-block; }
 
         .admin-btn:hover { background-color: #3f3f46; }
@@ -128,7 +127,7 @@
 
         #admin-panel h3 { margin-top: 0; color: var(--primary-blue); }
 
-        input, textarea {
+        input, textarea, select {
             width: 100%;
             padding: 12px;
             margin-bottom: 15px;
@@ -140,9 +139,9 @@
             font-family: inherit;
         }
 
-        input:focus, textarea:focus { outline: none; border-color: var(--primary-blue); }
+        input:focus, textarea:focus, select:focus { outline: none; border-color: var(--primary-blue); }
 
-        .image-options {
+        .image-options, .file-options {
             background-color: #27272a;
             border: 1px dashed var(--border-color);
             border-radius: 8px;
@@ -150,7 +149,7 @@
             margin-bottom: 15px;
         }
 
-        .image-options label {
+        .image-options label, .file-options label {
             display: block;
             font-size: 14px;
             color: var(--text-muted);
@@ -158,13 +157,12 @@
             font-weight: bold;
         }
 
-        /* ===== BOTÃO DA GALERIA ===== */
         .galeria-btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
             gap: 8px;
-            background-color: var(--primary-blue);
+            background-color: #3f3f46;
             color: white;
             border: none;
             padding: 12px 20px;
@@ -176,7 +174,7 @@
             transition: 0.2s;
             margin-bottom: 10px;
         }
-        .galeria-btn:hover { background-color: #1d4ed8; }
+        .galeria-btn:hover { background-color: #52525b; }
 
         .divider-text {
             text-align: center;
@@ -239,182 +237,198 @@
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
         }
 
-        .modal-box h2 {
-            margin-top: 0;
-            color: var(--primary-blue);
-            text-align: center;
-        }
+        .modal-box h2 { margin-top: 0; color: var(--primary-blue); text-align: center; }
 
-        .modal-tabs {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 20px;
-        }
+        .modal-tabs { display: flex; gap: 8px; margin-bottom: 20px; }
 
         .modal-tab {
-            flex: 1;
-            padding: 10px;
-            background-color: #27272a;
-            border: 1px solid var(--border-color);
-            color: var(--text-muted);
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: 0.2s;
+            flex: 1; padding: 10px; background-color: #27272a; border: 1px solid var(--border-color); color: var(--text-muted); border-radius: 6px; cursor: pointer; font-weight: bold; transition: 0.2s;
         }
 
-        .modal-tab.active {
-            background-color: var(--primary-blue);
-            color: white;
-            border-color: var(--primary-blue);
-        }
+        .modal-tab.active { background-color: var(--primary-blue); color: white; border-color: var(--primary-blue); }
 
         .modal-form { display: none; }
         .modal-form.active { display: block; }
 
         .fechar-modal {
-            background-color: #3f3f46;
-            color: white;
-            border: none;
-            padding: 10px;
-            width: 100%;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: bold;
-            margin-top: 10px;
-            transition: 0.2s;
+            background-color: #3f3f46; color: white; border: none; padding: 10px; width: 100%; border-radius: 6px; cursor: pointer; font-weight: bold; margin-top: 10px; transition: 0.2s;
         }
         .fechar-modal:hover { background-color: #52525b; }
 
         /* ===== BARRA DE PESQUISA ===== */
-        .search-container {
-            position: relative;
-            margin-bottom: 25px;
-        }
+        .search-container { position: relative; margin-bottom: 25px; }
 
         .search-input {
-            width: 100%;
-            padding: 14px 45px 14px 16px;
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            color: white;
-            border-radius: 10px;
-            font-size: 15px;
-            box-sizing: border-box;
-            margin: 0;
+            width: 100%; padding: 14px 45px 14px 16px; background-color: var(--card-bg); border: 1px solid var(--border-color); color: white; border-radius: 10px; font-size: 15px; box-sizing: border-box; margin: 0;
         }
 
         .search-input:focus { border-color: var(--primary-blue); outline: none; }
 
-        .search-icon {
-            position: absolute;
-            right: 16px;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 18px;
-            color: var(--text-muted);
-            pointer-events: none;
-        }
+        .search-icon { position: absolute; right: 16px; top: 50%; transform: translateY(-50%); font-size: 18px; color: var(--text-muted); pointer-events: none; }
 
         .search-locked {
-            background-color: var(--card-bg);
-            border: 1px dashed var(--border-color);
-            border-radius: 10px;
-            padding: 16px;
-            text-align: center;
-            color: var(--text-muted);
-            font-size: 14px;
-            margin-bottom: 25px;
+            background-color: var(--card-bg); border: 1px dashed var(--border-color); border-radius: 10px; padding: 16px; text-align: center; color: var(--text-muted); font-size: 14px; margin-bottom: 25px;
         }
 
         .search-locked button {
-            background-color: var(--primary-blue);
-            color: white;
-            border: none;
-            padding: 8px 16px;
-            border-radius: 6px;
-            font-weight: bold;
-            cursor: pointer;
-            margin-left: 8px;
-            transition: 0.2s;
+            background-color: var(--primary-blue); color: white; border: none; padding: 8px 16px; border-radius: 6px; font-weight: bold; cursor: pointer; margin-left: 8px; transition: 0.2s;
         }
         .search-locked button:hover { background-color: #1d4ed8; }
 
         /* ===== CARDS DE SCRIPT ===== */
         .script-card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            overflow: hidden;
-            margin-bottom: 25px;
-            position: relative;
+            background-color: var(--card-bg); border: 1px solid var(--border-color); border-radius: 12px; overflow: hidden; margin-bottom: 25px; position: relative;
         }
 
         .delete-btn {
-            display: none;
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background-color: rgba(220, 38, 38, 0.95);
-            color: white;
-            border: none;
-            padding: 8px 14px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: bold;
-            font-size: 14px;
-            backdrop-filter: blur(4px);
-            transition: 0.2s;
-            z-index: 10;
+            display: none; position: absolute; top: 10px; right: 10px; background-color: rgba(220, 38, 38, 0.95); color: white; border: none; padding: 8px 14px; border-radius: 6px; cursor: pointer; font-weight: bold; font-size: 14px; backdrop-filter: blur(4px); transition: 0.2s; z-index: 10;
         }
         .delete-btn:hover { background-color: rgba(185, 28, 28, 1); }
 
         body.admin-logado .delete-btn { display: block !important; }
 
         .script-image {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-bottom: 1px solid var(--border-color);
-            background-color: #000;
+            width: 100%; height: 200px; object-fit: cover; border-bottom: 1px solid var(--border-color); background-color: #000;
         }
 
         .script-content { padding: 20px; }
         .script-card h2 { margin: 0 0 10px 0; font-size: 22px; }
         .script-desc { color: var(--text-muted); font-size: 14px; margin-bottom: 15px; line-height: 1.4; }
 
-        .copy-btn {
-            background-color: var(--primary-blue);
-            color: white;
-            border: none;
-            padding: 12px;
-            width: 100%;
-            border-radius: 6px;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 8px;
-            transition: 0.2s;
+        .copy-btn, .download-btn {
+            color: white; border: none; padding: 12px; width: 100%; border-radius: 6px; font-size: 16px; font-weight: bold; cursor: pointer; display: flex; justify-content: center; align-items: center; gap: 8px; transition: 0.2s; margin-bottom: 10px;
         }
 
+        .copy-btn { background-color: var(--primary-blue); }
         .copy-btn:hover { background-color: #1d4ed8; }
         .copy-btn.copiado { background-color: var(--green); }
 
-        .copy-btn.bloqueado {
-            background-color: #7c2d12;
-            cursor: not-allowed;
-        }
-        .copy-btn.bloqueado:hover { background-color: #7c2d12; }
+        .download-btn { background-color: #ea580c; }
+        .download-btn:hover { background-color: #c2410c; }
 
-        .empty-message {
-            text-align: center;
-            color: var(--text-muted);
-            padding: 40px 0;
-            display: none;
+        .copy-btn.bloqueado, .download-btn.bloqueado { background-color: #7c2d12; cursor: not-allowed; }
+        .copy-btn.bloqueado:hover, .download-btn.bloqueado:hover { background-color: #7c2d12; }
+
+        .empty-message { text-align: center; color: var(--text-muted); padding: 40px 0; display: none; }
+
+        /* ===== SISTEMA DE AVALIAÇÃO (DENTRO DO CARD) ===== */
+        .review-section {
+            background-color: #18181b;
+            border-top: 1px solid var(--border-color);
+            padding: 20px;
         }
+
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            cursor: pointer;
+        }
+
+        .review-header h3 {
+            margin: 0;
+            font-size: 16px;
+            color: #f59e0b;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .average-rating {
+            font-size: 14px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .stars-display {
+            color: #52525b;
+            font-size: 16px;
+            letter-spacing: 2px;
+        }
+
+        .stars-display .star-filled { color: var(--star-color); }
+
+        .review-form-container {
+            display: none; /* Escondido por padrão */
+            margin-bottom: 20px;
+            background-color: var(--card-bg);
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #333338;
+        }
+
+        .review-form-container.active { display: block; }
+
+        .review-form-container input, .review-form-container textarea {
+            background-color: #111113;
+            border: 1px solid #333338;
+            border-radius: 8px;
+            padding: 10px;
+            font-size: 13px;
+            margin-bottom: 10px;
+        }
+
+        .star-rating-input {
+            display: flex;
+            gap: 5px;
+            font-size: 24px;
+            cursor: pointer;
+            margin-bottom: 10px;
+            color: #52525b;
+        }
+
+        .star-rating-input span { transition: color 0.2s; }
+        .star-rating-input span.active, .star-rating-input span:hover { color: var(--star-color); }
+
+        .submit-review-btn {
+            background: linear-gradient(90deg, #f59e0b, #ea580c);
+            color: #111;
+            border: none;
+            padding: 10px;
+            width: 100%;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .submit-review-btn:hover { filter: brightness(1.1); }
+
+        .reviews-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            max-height: 250px;
+            overflow-y: auto;
+            padding-right: 5px;
+        }
+
+        /* Scrollbar personalizada para a lista de reviews */
+        .reviews-list::-webkit-scrollbar { width: 6px; }
+        .reviews-list::-webkit-scrollbar-track { background: #111; }
+        .reviews-list::-webkit-scrollbar-thumb { background: #3f3f46; border-radius: 3px; }
+
+        .review-item {
+            background-color: var(--card-bg);
+            border: 1px solid #3f3f46;
+            border-radius: 8px;
+            padding: 12px;
+        }
+
+        .review-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+
+        .review-item-name { font-weight: bold; color: #e4e4e7; font-size: 13px; }
+        .review-item-stars { color: var(--star-color); font-size: 12px; letter-spacing: 1px; }
+        .review-item-comment { color: var(--text-muted); font-size: 13px; line-height: 1.3; margin: 0; }
 
         @media (max-width: 600px) {
             header { flex-direction: column; gap: 15px; }
@@ -427,11 +441,8 @@
     <header>
         <div class="logo">⚡ RBX <span>Scripts</span></div>
         <div class="header-buttons">
-            <a href="https://www.youtube.com/@RBX-o7y" target="_blank" class="yt-btn">
-                ▶ Inscreva-se
-            </a>
+            <a href="https://www.youtube.com/@RBX-o7y" target="_blank" class="yt-btn">▶ Inscreva-se</a>
             <button class="user-btn" id="btn-user" onclick="abrirModal()">👤 Entrar / Criar Conta</button>
-            <!-- 🔒 Botão do dono: só aparece quando VOCÊ estiver logado -->
             <button class="admin-btn" id="btn-admin" onclick="toggleAdmin()">👑 Painel do Dono</button>
         </div>
     </header>
@@ -443,24 +454,35 @@
             <input type="text" id="titulo-input" placeholder="Título do Script (Ex: Inf Money Imperador Noobs)">
             
             <div class="image-options">
-                <label>📸 Imagem do Script</label>
-
-                <!-- 📱 BOTÃO QUE ABRE A GALERIA -->
+                <label>📸 Imagem de Capa (Opcional)</label>
                 <button type="button" class="galeria-btn" onclick="document.getElementById('imagem-arquivo').click()">
-                    📷 Escolher da Galeria
+                    📷 Escolher Imagem
                 </button>
-                <!-- input escondido que é acionado pelo botão acima -->
                 <input type="file" id="imagem-arquivo" accept="image/*" onchange="previewArquivo(event)" style="display:none;">
 
                 <div class="divider-text">— ou —</div>
 
                 <input type="text" id="imagem-input" placeholder="Cole o link da imagem (URL .jpg, .png...)" oninput="previewLink()">
-
                 <img id="preview-img" class="preview-img" alt="Pré-visualização">
             </div>
 
             <textarea id="desc-input" placeholder="Descrição curta (Ex: Keyless, Funciona na versão mobile...)" rows="2"></textarea>
-            <textarea id="codigo-input" placeholder="Cole aqui o código do script (loadstring)..." rows="5"></textarea>
+            
+            <!-- NOVO: Campo para Código e Arquivo -->
+            <div class="file-options">
+                <label>📜 Código do Script (Cole abaixo)</label>
+                <textarea id="codigo-input" placeholder="Cole aqui o código (loadstring, etc)..." rows="4"></textarea>
+                
+                <div class="divider-text">— E/OU —</div>
+                
+                <label>📁 Anexar Arquivo (Opcional)</label>
+                <button type="button" class="galeria-btn" onclick="document.getElementById('script-arquivo').click()">
+                    📄 Escolher Arquivo (.lua, .txt, .zip)
+                </button>
+                <input type="file" id="script-arquivo" onchange="previewArquivoScript(event)" style="display:none;">
+                <div id="nome-arquivo-preview" style="font-size: 12px; color: var(--green); margin-top: 5px;"></div>
+            </div>
+
             <button class="publish-btn" onclick="adicionarScript()">Publicar Script no Site</button>
         </div>
 
@@ -505,7 +527,8 @@
 
         let isLogado = false;
         let usuarioAtual = null;
-        let imagemBase64Atual = null;   // ⭐ guarda a imagem escolhida da galeria
+        let imagemBase64Atual = null;
+        let arquivoScriptAtual = null; // Armazena o arquivo anexado
         let termoPesquisa = "";
 
         /* ================= ELEMENTOS ================= */
@@ -520,6 +543,7 @@
 
         let bancoDeScripts = JSON.parse(localStorage.getItem('meusScripts')) || [];
         let bancoDeUsuarios = JSON.parse(localStorage.getItem('usuariosRBX')) || {};
+        let bancoDeAvaliacoes = JSON.parse(localStorage.getItem('avaliacoesRBX')) || []; // Avaliações globais ligadas ao ID do script
 
         /* ================= IDENTIFICAÇÃO DO DONO ================= */
         function normalizarNome(nome) {
@@ -542,20 +566,14 @@
 
         function garantirContaDono() {
             const existente = acharContaDono();
-
             if (existente) {
                 bancoDeUsuarios[existente.chave].dono = true;
                 bancoDeUsuarios[existente.chave].senha = SENHA_DONO;
                 bancoDeUsuarios[existente.chave].nome = NOME_DONO;
             } else {
                 const chave = normalizarNome(NOME_DONO);
-                bancoDeUsuarios[chave] = {
-                    nome: NOME_DONO,
-                    senha: SENHA_DONO,
-                    dono: true
-                };
+                bancoDeUsuarios[chave] = { nome: NOME_DONO, senha: SENHA_DONO, dono: true };
             }
-
             localStorage.setItem('usuariosRBX', JSON.stringify(bancoDeUsuarios));
         }
 
@@ -565,12 +583,10 @@
                 if (confirm(`Logado como "${usuarioAtual}". Deseja sair?`)) {
                     usuarioAtual = null;
                     localStorage.removeItem('usuarioLogado');
-
                     isLogado = false;
                     adminPanel.style.display = 'none';
                     btnAdmin.classList.remove('logado');
                     document.body.classList.remove('dono-logado');
-
                     atualizarUIUsuario();
                     renderizarScripts();
                 }
@@ -579,9 +595,7 @@
             modalOverlay.classList.add('ativo');
         }
 
-        function fecharModal() {
-            modalOverlay.classList.remove('ativo');
-        }
+        function fecharModal() { modalOverlay.classList.remove('ativo'); }
 
         function mudarTab(tab) {
             document.getElementById('tab-login').classList.toggle('active', tab === 'login');
@@ -598,11 +612,7 @@
             if (user.length < 3) { alert("O nome de usuário precisa ter pelo menos 3 caracteres."); return; }
             if (pass.length < 4) { alert("A senha precisa ter pelo menos 4 caracteres."); return; }
             if (pass !== pass2) { alert("As senhas não coincidem!"); return; }
-
-            if (ehDono(user)) {
-                alert("❌ Este nome de usuário é reservado. Escolha outro.");
-                return;
-            }
+            if (ehDono(user)) { alert("❌ Este nome de usuário é reservado. Escolha outro."); return; }
 
             if (bancoDeUsuarios[normalizarNome(user)]) {
                 alert("Este nome de usuário já existe. Escolha outro.");
@@ -616,7 +626,6 @@
             localStorage.setItem('usuarioLogado', user);
 
             alert(`✅ Conta criada com sucesso! Bem-vindo, ${user}!`);
-
             fecharModal();
             atualizarUIUsuario();
             renderizarScripts();
@@ -648,7 +657,6 @@
             if (ehDono(conta.nome) || conta.dono) {
                 bancoDeUsuarios[chaveConta].dono = true;
                 localStorage.setItem('usuariosRBX', JSON.stringify(bancoDeUsuarios));
-
                 ativarAdminAutomatico();
                 alert(`👑 Bem-vindo, DONO ${conta.nome}! Você tem acesso total ao site.`);
             } else {
@@ -672,8 +680,7 @@
             if (usuarioAtual) {
                 if (ehDono(usuarioAtual)) {
                     btnUser.innerText = `👑 ${usuarioAtual} (Sair)`;
-                    btnUser.classList.add('logado');
-                    btnUser.classList.add('dono');
+                    btnUser.classList.add('logado', 'dono');
                 } else {
                     btnUser.innerText = `👤 ${usuarioAtual} (Sair)`;
                     btnUser.classList.add('logado');
@@ -681,8 +688,7 @@
                 }
             } else {
                 btnUser.innerText = "👤 Entrar / Criar Conta";
-                btnUser.classList.remove('logado');
-                btnUser.classList.remove('dono');
+                btnUser.classList.remove('logado', 'dono');
             }
         }
 
@@ -713,30 +719,28 @@
             renderizarScripts();
         }
 
-        /* ================= IMAGEM (GALERIA + URL) ================= */
-        // 📷 Chamado quando o usuário escolhe uma imagem da galeria
+        /* ================= IMAGEM E ARQUIVOS ================= */
+        // Upload de Imagem de Capa
         function previewArquivo(event) {
             const file = event.target.files[0];
             if (!file) return;
 
             const reader = new FileReader();
             reader.onload = function(e) {
-                imagemBase64Atual = e.target.result;   // guarda em Base64
+                imagemBase64Atual = e.target.result;
                 previewImg.src = imagemBase64Atual;
                 previewImg.style.display = 'block';
-                // limpa o campo de URL pra não conflitar
                 document.getElementById('imagem-input').value = '';
             };
             reader.readAsDataURL(file);
         }
 
-        // 🔗 Chamado quando o usuário cola uma URL
         function previewLink() {
             const url = document.getElementById('imagem-input').value.trim();
             if (url !== "") {
                 previewImg.src = url;
                 previewImg.style.display = 'block';
-                imagemBase64Atual = null;   // descarta a imagem da galeria
+                imagemBase64Atual = null;
                 document.getElementById('imagem-arquivo').value = '';
             } else {
                 previewImg.style.display = 'none';
@@ -751,7 +755,28 @@
             document.getElementById('imagem-input').value = '';
         }
 
-        /* ================= RENDERIZAÇÃO ================= */
+        // Upload de Arquivo do Script (.lua, .txt, etc)
+        function previewArquivoScript(event) {
+            const file = event.target.files[0];
+            if (!file) {
+                arquivoScriptAtual = null;
+                document.getElementById('nome-arquivo-preview').innerText = '';
+                return;
+            }
+
+            // Lê o arquivo como Base64 para salvar no localStorage
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                arquivoScriptAtual = {
+                    nome: file.name,
+                    dados: e.target.result // string Base64
+                };
+                document.getElementById('nome-arquivo-preview').innerText = `✅ Arquivo anexado: ${file.name}`;
+            };
+            reader.readAsDataURL(file);
+        }
+
+        /* ================= RENDERIZAÇÃO DE SCRIPTS ================= */
         function renderizarScripts() {
             renderizarPesquisa();
             listaScripts.innerHTML = '';
@@ -778,24 +803,114 @@
                 const novoCard = document.createElement('div');
                 novoCard.className = 'script-card';
 
-                const codigoSeguro = encodeURIComponent(script.codigo);
                 const bloqueado = !usuarioAtual;
+                
+                // Busca avaliações específicas DESTE script
+                const reviewsDoScript = bancoDeAvaliacoes.filter(av => av.scriptId === script.id);
+                
+                // Calcula a média
+                let mediaHtml = "0.0 / 5";
+                let estrelasHtml = "☆☆☆☆☆";
+                if (reviewsDoScript.length > 0) {
+                    let soma = reviewsDoScript.reduce((acc, av) => acc + av.nota, 0);
+                    let media = (soma / reviewsDoScript.length).toFixed(1);
+                    mediaHtml = `${media} / 5`;
+                    
+                    let arredondadas = Math.round(media);
+                    estrelasHtml = '';
+                    for(let i=1; i<=5; i++) {
+                        estrelasHtml += i <= arredondadas ? '<span class="star-filled">★</span>' : '★';
+                    }
+                }
 
-                novoCard.innerHTML = `
-                    <button class="delete-btn" onclick="apagarScript(${indexReal})">🗑️ Apagar</button>
-                    <img src="${script.imagem}" alt="Imagem do Script" class="script-image" onerror="this.src='https://via.placeholder.com/800x200/1e1e24/ffffff?text=Erro+na+Imagem'">
-                    <div class="script-content">
-                        <h2>${script.titulo}</h2>
-                        <div class="script-desc">${script.desc || ""}</div>
+                // Monta os botões de ação (Copiar / Baixar)
+                let acoesHtml = "";
+                if (script.codigo && script.codigo.trim() !== "") {
+                    const codigoSeguro = encodeURIComponent(script.codigo);
+                    acoesHtml += `
                         <button class="copy-btn ${bloqueado ? 'bloqueado' : ''}"
                                 onclick="${bloqueado
-                                    ? "alert('🔒 Crie uma conta ou faça login para copiar o script sem anúncios!'); abrirModal();"
+                                    ? "alert('🔒 Crie uma conta ou faça login para copiar!'); abrirModal();"
                                     : `copiarTexto(this, decodeURIComponent('${codigoSeguro}'))`}">
                             ${bloqueado ? "🔒 Copiar (requer login)" : "📋 Copiar Script"}
                         </button>
+                    `;
+                }
+                
+                if (script.arquivo) {
+                    // Se tiver arquivo, cria o botão que chama a função de download (que checa o login)
+                    acoesHtml += `
+                        <button class="download-btn ${bloqueado ? 'bloqueado' : ''}"
+                                onclick="baixarArquivo(${indexReal}, '${script.arquivo.nome}')">
+                            ${bloqueado ? "🔒 Baixar Arquivo (requer login)" : "⬇️ Baixar Arquivo (" + script.arquivo.nome + ")"}
+                        </button>
+                    `;
+                }
+
+                novoCard.innerHTML = `
+                    <button class="delete-btn" onclick="apagarScript(${indexReal})">🗑️ Apagar</button>
+                    <img src="${script.imagem}" alt="Imagem do Script" class="script-image" onerror="this.src='https://via.placeholder.com/800x200/1e1e24/ffffff?text=Sem+Imagem'">
+                    <div class="script-content">
+                        <h2>${script.titulo}</h2>
+                        <div class="script-desc">${script.desc || ""}</div>
+                        ${acoesHtml}
+                    </div>
+                    
+                    <!-- ÁREA DE AVALIAÇÃO EXCLUSIVA DO SCRIPT -->
+                    <div class="review-section">
+                        <div class="review-header" onclick="toggleReviewForm(${script.id})">
+                            <h3>⭐ Rate & Review</h3>
+                            <div class="average-rating">
+                                <span>${mediaHtml}</span>
+                                <span style="font-size: 12px; color: var(--text-muted); font-weight: normal;">(${reviewsDoScript.length} reviews)</span>
+                            </div>
+                        </div>
+                        <div class="stars-display" style="margin-bottom: 15px;">${estrelasHtml}</div>
+                        
+                        <!-- Formulário escondido que abre ao clicar no header -->
+                        <div class="review-form-container" id="review-form-${script.id}">
+                            <div class="star-rating-input" id="interactive-stars-${script.id}">
+                                <span onclick="setRating(${script.id}, 1)" onmouseover="hoverRating(${script.id}, 1)" onmouseout="resetHover(${script.id})">★</span>
+                                <span onclick="setRating(${script.id}, 2)" onmouseover="hoverRating(${script.id}, 2)" onmouseout="resetHover(${script.id})">★</span>
+                                <span onclick="setRating(${script.id}, 3)" onmouseover="hoverRating(${script.id}, 3)" onmouseout="resetHover(${script.id})">★</span>
+                                <span onclick="setRating(${script.id}, 4)" onmouseover="hoverRating(${script.id}, 4)" onmouseout="resetHover(${script.id})">★</span>
+                                <span onclick="setRating(${script.id}, 5)" onmouseover="hoverRating(${script.id}, 5)" onmouseout="resetHover(${script.id})">★</span>
+                            </div>
+                            <input type="text" id="review-name-${script.id}" placeholder="Seu nome (opcional)">
+                            <textarea id="review-comment-${script.id}" placeholder="Escreva seu comentário..." rows="2"></textarea>
+                            <button class="submit-review-btn" onclick="enviarAvaliacao(${script.id})">Enviar Avaliação</button>
+                        </div>
+
+                        <div class="reviews-list" id="reviews-container-${script.id}">
+                            <!-- Reviews inseridas via JS abaixo -->
+                        </div>
                     </div>
                 `;
+                
                 listaScripts.appendChild(novoCard);
+
+                // Popula a lista de avaliações deste script
+                const containerReviews = document.getElementById(`reviews-container-${script.id}`);
+                if(reviewsDoScript.length > 0) {
+                    reviewsDoScript.forEach(av => {
+                        const item = document.createElement('div');
+                        item.className = 'review-item';
+                        let estrelinhas = '';
+                        for (let i = 1; i <= 5; i++) estrelinhas += i <= av.nota ? '★' : '☆';
+                        
+                        item.innerHTML = `
+                            <div class="review-item-header">
+                                <span class="review-item-name">${av.nome}</span>
+                                <span class="review-item-stars">${estrelinhas}</span>
+                            </div>
+                            <p class="review-item-comment">${av.comentario}</p>
+                        `;
+                        containerReviews.appendChild(item);
+                    });
+                } else {
+                    containerReviews.innerHTML = `<p style="font-size: 12px; color: var(--text-muted); text-align: center;">Nenhuma avaliação ainda. Seja o primeiro!</p>`;
+                }
+
             });
 
             document.body.classList.toggle('admin-logado', isLogado);
@@ -825,36 +940,42 @@
             const desc = document.getElementById('desc-input').value;
             const codigo = document.getElementById('codigo-input').value;
 
-            if (titulo.trim() === "" || codigo.trim() === "") {
-                alert("Por favor, preencha pelo menos o título e o código do script.");
+            if (titulo.trim() === "" || (codigo.trim() === "" && !arquivoScriptAtual)) {
+                alert("Por favor, preencha o título e adicione um código OU um arquivo.");
                 return;
             }
 
-            // ⭐ Prioridade: imagem da galeria > URL > placeholder
-            let imagemFinal;
-            if (imagemBase64Atual) {
-                imagemFinal = imagemBase64Atual;
-            } else if (imagemUrl !== "") {
-                imagemFinal = imagemUrl;
-            } else {
-                imagemFinal = "https://via.placeholder.com/800x200/1e1e24/ffffff?text=Sem+Imagem";
-            }
+            let imagemFinal = imagemBase64Atual || imagemUrl || "https://via.placeholder.com/800x200/1e1e24/ffffff?text=Sem+Imagem";
 
-            const novoScript = { titulo, imagem: imagemFinal, desc, codigo };
+            // ID Único para o script (para linkar as avaliações)
+            const idUnico = Date.now().toString() + Math.floor(Math.random() * 1000);
+
+            const novoScript = { 
+                id: idUnico,
+                titulo, 
+                imagem: imagemFinal, 
+                desc, 
+                codigo,
+                arquivo: arquivoScriptAtual // Salva o arquivo convertido em Base64
+            };
 
             try {
                 bancoDeScripts.unshift(novoScript);
                 localStorage.setItem('meusScripts', JSON.stringify(bancoDeScripts));
             } catch (e) {
-                alert("⚠️ Erro ao salvar: o armazenamento do navegador está cheio. Tente uma imagem menor ou use um link.");
+                alert("⚠️ Erro ao salvar: o armazenamento do navegador está cheio. Tente um arquivo menor ou use links.");
                 bancoDeScripts.shift();
                 return;
             }
 
+            // Limpa os campos
             document.getElementById('titulo-input').value = '';
             document.getElementById('desc-input').value = '';
             document.getElementById('codigo-input').value = '';
             resetarImagem();
+            arquivoScriptAtual = null;
+            document.getElementById('script-arquivo').value = '';
+            document.getElementById('nome-arquivo-preview').innerText = '';
 
             alert("Script salvo com sucesso!");
             renderizarScripts();
@@ -862,11 +983,14 @@
 
         function apagarScript(index) {
             if (!isLogado || !ehDono(usuarioAtual)) return;
-
             const script = bancoDeScripts[index];
             if (!script) return;
 
             if (confirm(`Apagar o script "${script.titulo}"?\n\nEssa ação não pode ser desfeita.`)) {
+                // Apaga as avaliações atreladas a este script também
+                bancoDeAvaliacoes = bancoDeAvaliacoes.filter(av => av.scriptId !== script.id);
+                localStorage.setItem('avaliacoesRBX', JSON.stringify(bancoDeAvaliacoes));
+
                 bancoDeScripts.splice(index, 1);
                 localStorage.setItem('meusScripts', JSON.stringify(bancoDeScripts));
                 renderizarScripts();
@@ -879,10 +1003,10 @@
             }
         }
 
-        /* ================= COPIAR ================= */
+        /* ================= COPIAR E BAIXAR ================= */
         function copiarTexto(botao, texto) {
             if (!usuarioAtual) {
-                alert("🔒 Crie uma conta ou faça login para copiar sem anúncios!");
+                alert("🔒 Crie uma conta ou faça login para copiar!");
                 abrirModal();
                 return;
             }
@@ -899,6 +1023,97 @@
             });
         }
 
+        function baixarArquivo(index, nomeArquivo) {
+            if (!usuarioAtual) {
+                alert("🔒 Crie uma conta ou faça login para baixar arquivos!");
+                abrirModal();
+                return;
+            }
+
+            const script = bancoDeScripts[index];
+            if (!script || !script.arquivo) return;
+
+            // Cria um link temporário para forçar o download do arquivo em Base64
+            const link = document.createElement("a");
+            link.href = script.arquivo.dados;
+            link.download = nomeArquivo;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        /* ================= SISTEMA DE AVALIAÇÃO (POR SCRIPT) ================= */
+        
+        // Variável para guardar a nota clicada temporariamente por script
+        let notasTemporarias = {}; 
+
+        function toggleReviewForm(idScript) {
+            const form = document.getElementById(`review-form-${idScript}`);
+            form.classList.toggle('active');
+        }
+
+        function hoverRating(idScript, valor) {
+            const estrelas = document.getElementById(`interactive-stars-${idScript}`).children;
+            for (let i = 0; i < estrelas.length; i++) {
+                if (i < valor) estrelas[i].classList.add('active');
+                else estrelas[i].classList.remove('active');
+            }
+        }
+
+        function resetHover(idScript) {
+            const estrelas = document.getElementById(`interactive-stars-${idScript}`).children;
+            let notaAtual = notasTemporarias[idScript] || 0;
+            for (let i = 0; i < estrelas.length; i++) {
+                if (i < notaAtual) estrelas[i].classList.add('active');
+                else estrelas[i].classList.remove('active');
+            }
+        }
+
+        function setRating(idScript, valor) {
+            notasTemporarias[idScript] = valor;
+            resetHover(idScript);
+        }
+
+        function enviarAvaliacao(idScript) {
+            const nota = notasTemporarias[idScript] || 0;
+            const nomeInput = document.getElementById(`review-name-${idScript}`).value.trim();
+            const comentario = document.getElementById(`review-comment-${idScript}`).value.trim();
+
+            if (nota === 0) {
+                alert("Por favor, selecione uma nota de 1 a 5 estrelas.");
+                return;
+            }
+            if (comentario === "") {
+                alert("Por favor, escreva um comentário antes de enviar.");
+                return;
+            }
+
+            const nomeFinal = nomeInput || "Anônimo";
+
+            const novaAvaliacao = {
+                scriptId: idScript,
+                nome: nomeFinal,
+                nota: nota,
+                comentario: comentario,
+                data: new Date().toISOString()
+            };
+
+            bancoDeAvaliacoes.unshift(novaAvaliacao);
+            localStorage.setItem('avaliacoesRBX', JSON.stringify(bancoDeAvaliacoes));
+
+            // Limpa o formulário
+            notasTemporarias[idScript] = 0;
+            document.getElementById(`review-name-${idScript}`).value = '';
+            document.getElementById(`review-comment-${idScript}`).value = '';
+            resetHover(idScript);
+            
+            // Fecha o form e atualiza a tela
+            document.getElementById(`review-form-${idScript}`).classList.remove('active');
+            renderizarScripts(); // Recarrega a lista para atualizar a média
+            
+            alert("⭐ Obrigado! Sua avaliação foi enviada.");
+        }
+
         /* ================= INICIALIZAÇÃO ================= */
         (function init() {
             garantirContaDono();
@@ -906,7 +1121,6 @@
             const salvo = localStorage.getItem('usuarioLogado');
             if (salvo && bancoDeUsuarios[normalizarNome(salvo)]) {
                 usuarioAtual = bancoDeUsuarios[normalizarNome(salvo)].nome;
-
                 if (ehDono(usuarioAtual)) {
                     ativarAdminAutomatico();
                 }
@@ -916,4 +1130,4 @@
         })();
     </script>
 </body>
-  </html>
+</html>
